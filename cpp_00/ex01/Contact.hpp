@@ -6,15 +6,14 @@
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 14:13:45 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/01/13 03:24:26 by mamaquig         ###   ########.fr       */
+/*   Updated: 2022/01/13 17:25:06 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
 
-# include <iostream>
-# include <cstdlib>
+# include "phone_bot.h"
 
 class Contact
 {
@@ -22,8 +21,12 @@ class Contact
 		Contact();
 		Contact(std::string data[5]);
 		~Contact();
-
-		void print_contacts(int index);
+		
+		void		print_contacts(unsigned int index, Contact contact[8]);
+		bool		print_infos(unsigned int index, Contact contact[8]);
+		std::string	get_first_name(Contact contact);
+		std::string	get_last_name(Contact contact);
+		std::string	get_nickname(Contact contact);
 	private:
 		std::string	_first_name;
 		std::string	_last_name;

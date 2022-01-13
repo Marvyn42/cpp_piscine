@@ -6,7 +6,7 @@
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 14:13:56 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/01/13 03:34:29 by mamaquig         ###   ########.fr       */
+/*   Updated: 2022/01/14 00:07:35 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,60 @@ Contact::Contact(std::string data[5]) : _first_name(data[0]), _last_name(data[1]
 Contact::~Contact() {
 }
 
-void	print_contacts(int index) {
+std::string	Contact::get_first_name(Contact contact) {
+	if (contact._first_name.length() >= 10)
+		contact._first_name = contact._first_name.substr(0, 9) + '.';
+	return (contact._first_name);
+}
+
+std::string	Contact::get_last_name(Contact contact) {
+	if (contact._last_name.length() >= 10)
+		contact._last_name = contact._last_name.substr(0, 9) + '.';
+	return (contact._last_name);
+}
+
+std::string	Contact::get_nickname(Contact contact) {
+	if (contact._nickname.length() >= 10)
+		contact._nickname = contact._nickname.substr(0, 9) + '.';
+	return (contact._nickname);
+}
+
+bool	Contact::print_infos(unsigned int index, Contact contact[8]) {
+	std::string		tmp;
+	unsigned int	i = 10;
+
+	std::cout << "(っ◔◡◔)っ: 𝒫𝓁𝑒𝒶𝓈𝑒, 𝓈𝑒𝓁𝑒𝒸𝓉 𝒶𝓃 𝒾𝓃𝒹𝑒𝓍 𝒷𝑒𝓉𝓌𝑒𝑒𝓃 𝟢 𝒶𝓃𝒹 " << index - 1 << std::endl << ">";
+	if (!std::getline(std::cin, tmp)) {
+			std::cerr << "Error getline. Exit." << std::endl;
+			return (false);
+	}
+	i = (unsigned int)atoi(tmp.c_str());
+	while (tmp.length() != 1 || std::isdigit(tmp.at(0)) == 0 || i >= index) {
+		std::cout << "(╯`Д´）╯︵ ┻━┻: 𝒫𝓁𝑒𝒶𝓈𝑒, 𝒹𝑜𝓃'𝓉 𝒻𝓊𝒸𝓀 𝓌𝒾𝓉𝒽 𝓂 𝑒..." << std::endl;
+		std::cout << "𝓈𝑒𝓁𝑒𝒸𝓉 𝒶𝓃 𝒾𝓃𝒹𝑒𝓍 𝒷𝑒𝓉𝓌𝑒𝑒𝓃 𝟢 𝒶𝓃𝒹 " << index - 1 << std::endl << ">";
+		if (!std::getline(std::cin, tmp)) {
+			std::cerr << "Error getline. Exit." << std::endl;
+			return (false);
+		}
+		i = (unsigned int)atoi(tmp.c_str());
+	}
+	std::cout << "𝐻𝒾𝓈 𝒻𝒾𝓇𝓈𝓉 𝓃𝒶𝓂 𝑒: [" <<contact[i]._first_name << "]" << std::endl;
+	std::cout << "𝐻𝒾𝓈 𝓁𝒶𝓈𝓉 𝓃𝒶𝓂 𝑒: [" <<contact[i]._last_name << "]" << std::endl;
+	std::cout << "𝐻𝒾𝓈 𝓃𝒾𝒸𝓀𝓃𝒶𝓂 𝑒: [" <<contact[i]._nickname << "]" << std::endl;
+	std::cout << "𝐻𝒾𝓈 𝓅𝒽𝑜𝓃𝑒 𝓃𝓊𝓂 𝒷𝑒𝓇: [" <<contact[i]._phone_number << "]" << std::endl;
+	std::cout << "𝐻𝒾𝓈 𝒹𝒶𝓇𝓀𝓈𝑒𝒸𝓇𝑒𝓉: [" <<contact[i]._darkest_secret << "]" << std::endl;
+	return (true);
+}
+
+void	Contact::print_contacts(unsigned int index, Contact contact[8]) {
+	std::cout << std::endl << "|-----index|first name|-last name|--nickname|" << std::endl;
 	for (size_t i = 0; i < index; i++) {
-		/* code */
+		std::cout << "|";
+		std::cout << std::right << std::setw(10) << i << "|";
+		std::cout << std::right << std::setw(10) << this->get_first_name(contact[i]) << "|";
+		std::cout << std::right << std::setw(10) << this->get_last_name(contact[i]) << "|";
+		std::cout << std::right << std::setw(10) << this->get_nickname(contact[i]) << "|" << std::endl;
 	}
 	std::cout << "|----------|----------|----------|----------|" << std::endl;
+	std::cout << "" << std::endl;
 }
