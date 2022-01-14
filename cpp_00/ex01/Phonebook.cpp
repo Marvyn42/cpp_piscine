@@ -6,23 +6,34 @@
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 00:17:15 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/01/13 23:34:29 by mamaquig         ###   ########.fr       */
+/*   Updated: 2022/01/14 15:57:24 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Phonebook.hpp"
 #include "phone_bot.h"
 
+/*
+**	Constructeur
+*/
 Phonebook::Phonebook() {
 	this->index = 0;
-	std::cout << "\\(^◇^)/: 𝐻𝒾 𝓈𝒾𝓇. 𝒴𝑜𝓊 𝒸𝒶𝓃 𝒸𝒽𝑜𝓈𝑒 𝟥 𝒸𝑜𝓂 𝓂 𝒶𝓃𝒹𝓈:" << std::endl << std::endl;
-	std::cout << "\t.𝐀𝐃𝐃" << std::endl << "\t.𝐒𝐄𝐀𝐑𝐂𝐇" << std::endl <<"\t.𝐄𝐗𝐈𝐓" << std::endl << std::endl;
+	std::cout << "\\(^◇^)/: 𝐻𝒾 𝓈𝒾𝓇. 𝒴𝑜𝓊 𝒸𝒶𝓃 𝒸𝒽𝑜𝓈𝑒 𝟥 𝒸𝑜𝓂 𝓂 𝒶𝓃𝒹𝓈:";
+	std::cout << std::endl << std::endl;
+	std::cout << "\t.𝐀𝐃𝐃" << std::endl << "\t.𝐒𝐄𝐀𝐑𝐂𝐇" << std::endl <<"\t.𝐄𝐗𝐈𝐓";
+	std::cout << std::endl << std::endl;
 	std::cout << "𝒲 𝒽𝒾𝒸𝒽 𝑜𝓃𝑒 𝒹𝑜 𝓎𝑜𝓊 𝓌 𝒶𝓃𝓉 𝓉𝑜 𝒸𝒽𝑜𝑜𝓈𝑒 ?" << std::endl << ">";
 }
 
+/*
+**	Destructeur
+*/
 Phonebook::~Phonebook() {
 }
 
+/*
+**	Récupère l'input de l'entrée standard et appel la fonction adéquate
+*/
 bool	Phonebook::get_cmd() {
 	std::string	cmd;
 
@@ -41,18 +52,29 @@ bool	Phonebook::get_cmd() {
 	return (true);
 }
 
-void	Phonebook::_wrong_cmd() {
+/*
+**	Affiche sur la sortie standard un message d'erreur
+*/
+void	Phonebook::_wrong_cmd() const {
 	std::cout << std::endl << "(っ◔◡◔)っ: 𝒮𝑜𝓇𝓇𝓎, 𝓎𝑜𝓊𝓇 𝓇𝑒𝓆𝓊𝑒𝓈𝓉 𝒶𝓇𝑒𝓃'𝓉 \
 𝓋𝒶𝓁𝒾𝒹. 𝒴𝑜𝓊 𝒸𝒶𝓃 𝒸𝒽𝑜𝓈𝑒 𝟥 𝒸𝑜𝓂 𝓂 𝒶𝓃𝒹𝓈:" << std::endl << std::endl;
-	std::cout << "\t.𝐀𝐃𝐃" << std::endl << "\t.𝐒𝐄𝐀𝐑𝐂𝐇" << std::endl <<"\t.𝐄𝐗𝐈𝐓" << std::endl << std::endl;
+	std::cout << "\t.𝐀𝐃𝐃" << std::endl << "\t.𝐒𝐄𝐀𝐑𝐂𝐇" << std::endl <<"\t.𝐄𝐗𝐈𝐓";
+	std::cout << std::endl << std::endl;
 	std::cout << "𝒲 𝒽𝒾𝒸𝒽 𝑜𝓃𝑒 𝒹𝑜 𝓎𝑜𝓊 𝓌 𝒶𝓃𝓉 𝓉𝑜 𝒸𝒽𝑜𝑜𝓈𝑒 ?" << std::endl << ">";
 }
 
-bool	Phonebook::_next_request() {
-	std::cout << std::endl << "(っ◔◡◔)っ: 𝒲𝒽𝒶𝓉'𝓈 𝓎𝑜𝓊𝓇 𝓃𝑒𝓍𝓉 𝓇𝑒𝓆𝓊𝑒𝓈𝓉 ?" << std::endl << ">";
+/*
+**	Affiche la demande de la nouvelle commande et renvoi true
+*/
+bool	Phonebook::_next_request() const {
+	std::cout << std::endl << "(っ◔◡◔)っ: 𝒲𝒽𝒶𝓉'𝓈 𝓎𝑜𝓊𝓇 𝓃𝑒𝓍𝓉 𝓇𝑒𝓆𝓊𝑒𝓈𝓉 ?";
+	std::cout << std::endl << ">";
 	return (true);
 }
 
+/*
+**	Ajoute first name au string data
+*/
 bool	Phonebook::_add_first_name(std::string *data) {
 	std::cout << std::endl << "𝒲𝒽𝒶𝓉'𝓈 𝒽𝒾𝓈 𝒻𝒾𝓇𝓈𝓉 𝓃𝒶𝓂 𝑒 ?" << std::endl << ">";
 	if (!std::getline(std::cin, *data)) {
@@ -66,6 +88,9 @@ bool	Phonebook::_add_first_name(std::string *data) {
 	return (true);
 }
 
+/*
+**	Ajoute last name au string data
+*/
 bool	Phonebook::_add_last_name(std::string *data) {
 	std::cout << std::endl << "𝒲𝒽𝒶𝓉'𝓈 𝒽𝒾𝓈 𝓁𝒶𝓈𝓉 𝓃𝒶𝓂 𝑒 ?" << std::endl << ">";
 	if (!std::getline(std::cin, *data)) {
@@ -79,6 +104,9 @@ bool	Phonebook::_add_last_name(std::string *data) {
 	return (true);
 }
 
+/*
+**	Ajoute nickname au string data
+*/
 bool	Phonebook::_add_nickname(std::string *data) {
 	std::cout << std::endl << "𝒲𝒽𝒶𝓉'𝓈 𝒽𝒾𝓈 𝓃𝒾𝒸𝓀𝓃𝒶𝓂 𝑒 ?" << std::endl << ">";
 	if (!std::getline(std::cin, *data)) {
@@ -92,6 +120,9 @@ bool	Phonebook::_add_nickname(std::string *data) {
 	return (true);
 }
 
+/*
+**	Ajoute phone number au string data
+*/
 bool	Phonebook::_add_phone_number(std::string *data) {
 	std::cout << std::endl << "𝒲𝒽𝒶𝓉'𝓈 𝒽𝒾𝓈 𝓅𝒽𝑜𝓃𝑒 𝓃𝓊𝓂 𝒷𝑒𝓇 ?" << std::endl << ">";
 	if (!std::getline(std::cin, *data)) {
@@ -105,7 +136,10 @@ bool	Phonebook::_add_phone_number(std::string *data) {
 	return (true);
 }
 
-bool	Phonebook::_add_darkest_secret(std::string *data) {
+/*
+**	Ajoute darkest secret au string data
+*/
+bool	Phonebook::_add_darkest_secret(std::string *data) const {
 	std::cout << std::endl << "𝒲𝒽𝒶𝓉'𝓈 𝒽𝒾𝓈 𝒹𝒶𝓇𝓀𝑒𝓈𝓉 𝓈𝑒𝒸𝓇𝑒𝓉 ?" << std::endl << ">";
 	if (!std::getline(std::cin, *data)) {
 		std::cerr << "Error getline. Exit." << std::endl;
@@ -114,6 +148,9 @@ bool	Phonebook::_add_darkest_secret(std::string *data) {
 	return (true);
 }
 
+/*
+** Commande ADD, qui ajoute un contact
+*/
 bool	Phonebook::_add_cmd() {
 	if (this->index == 8) {
 		std::cout << std::endl << "(⇀‸↼‶): 𝒯𝒽𝑒 𝓅𝒽𝑜𝓃𝑒 𝒷𝑜𝑜𝓀 𝒾𝓈 𝒻𝓊𝓁𝓁, \
@@ -131,9 +168,13 @@ bool	Phonebook::_add_cmd() {
 	return (this->_next_request());
 }
 
+/*
+**	Commande SEARCH, qui cherche un contact
+*/
 bool	Phonebook::_search_cmd() {
 	if (!this->index) {
-		std::cout << std::endl << "(س ͠° ͟ʖ ͡°)س: 𝒸𝒶𝓃𝓃𝑜𝓉 𝓈𝑒𝒶𝓇𝒸𝒽 𝒻𝑜𝓇 𝒶 𝒸𝑜𝓃𝓉𝒶𝒸𝓉 𝒾𝒻 𝒽𝑒'𝓈 𝓃𝑜𝓉 𝒶𝒹𝒹𝑒𝒹" << std::endl;
+		std::cout << std::endl << "(س ͠° ͟ʖ ͡°)س: 𝒸𝒶𝓃𝓃𝑜𝓉 𝓈𝑒𝒶𝓇𝒸𝒽 𝒻𝑜𝓇 𝒶 𝒸𝑜𝓃𝓉𝒶𝒸𝓉 𝒾𝒻 𝒽𝑒'𝓈 𝓃𝑜𝓉 𝒶𝒹𝒹𝑒𝒹";
+		std::cout << std::endl;
 		return (this->_next_request());
 	}
 	this->contact->print_contacts(this->index, this->contact);
@@ -142,7 +183,10 @@ bool	Phonebook::_search_cmd() {
 	return (this->_next_request());
 }
 
-bool	Phonebook::_exit_cmd() {
+/*
+**	Commande EXIT, qui quitte le programme
+*/
+bool	Phonebook::_exit_cmd() const {
 	std::cout << std::endl << "( ＾◡＾)っ: 𝐼𝓉 𝓌 𝒶𝓈 𝒶 𝓅𝓁𝑒𝒶𝓈𝓊𝓇𝑒. 𝒮𝑒𝑒 𝓎𝑜𝓊 ! 💗" << std::endl;
 	return (false);
 }
