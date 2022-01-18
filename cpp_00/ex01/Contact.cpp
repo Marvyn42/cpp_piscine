@@ -6,7 +6,7 @@
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 14:13:56 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/01/14 15:53:02 by mamaquig         ###   ########.fr       */
+/*   Updated: 2022/01/16 21:43:32 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ bool	Contact::print_infos(unsigned int index, Contact contact[8]) const {
 			return (false);
 	}
 	i = (unsigned int)atoi(tmp.c_str());
-	if (tmp.length() != 1 || std::isdigit(tmp.at(0)) == 0 || i >= index) {
+	while (tmp.length() != 1 || std::isdigit(tmp.at(0)) == 0 || i >= index) {
 		std::cout << "(╯`Д´）╯︵ ┻━┻: 𝒫𝓁𝑒𝒶𝓈𝑒, 𝒹𝑜𝓃'𝓉 𝒻𝓊𝒸𝓀 𝓌𝒾𝓉𝒽 𝓂 𝑒..." << std::endl;
 		std::cout << "𝓈𝑒𝓁𝑒𝒸𝓉 𝒶𝓃 𝒾𝓃𝒹𝑒𝓍 𝒷𝑒𝓉𝓌𝑒𝑒𝓃 𝟢 𝒶𝓃𝒹 " << index - 1 << std::endl << ">";
 		if (!std::getline(std::cin, tmp)) {
