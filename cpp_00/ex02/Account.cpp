@@ -6,7 +6,7 @@
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 03:24:29 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/01/18 03:07:01 by mamaquig         ###   ########.fr       */
+/*   Updated: 2022/01/19 16:43:28 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 #include <iostream>
 #include <ctime>
 
-//TODO: Obligatoire d'initialiser ? Peut on faire autrement ?
-//TODO: Obligé de déclaré en global ? C'est propre ?
 /*
 **	Initialisation des variables statics
 */
@@ -30,9 +28,6 @@ int Account::_totalAmount = 0;
 Account::Account( void ) {
 }
 
-//TODO: Plus propre d'initialiser _amount avec initial_deposit ??? Utile ???
-//TODO: Faut il initialiser les instances de la class Account ??? Ne sont il pas fait par défaut ???
-//TODO: Pourquoi index de 0 s'affiche alors qu'il y a ++ ???
 /*
 **	Constructeur avec initialisation de données
 */
