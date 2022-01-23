@@ -6,12 +6,15 @@
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 18:53:29 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/01/23 04:47:08 by mamaquig         ###   ########.fr       */
+/*   Updated: 2022/01/23 14:24:20 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "replace.h"
 
+/*
+**	Replace s1 by s2
+*/
 void	ft_replace(std::string &tmp, std::string s1, std::string s2) {
 	for (size_t pos = tmp.find(s1); pos < tmp.size(); pos = tmp.find(s1, pos+1)) {
 		tmp.erase(pos, s1.size());
@@ -19,7 +22,9 @@ void	ft_replace(std::string &tmp, std::string s1, std::string s2) {
 	}
 }
 
-
+/*
+**	check the filename, s1 and s2
+*/
 bool	checkArgs(std::ifstream &ifs, std::string s1, std::string s2) {
 	if (s1.empty() || s2.empty() || !ifs) {
 		if (!ifs)
@@ -31,6 +36,9 @@ bool	checkArgs(std::ifstream &ifs, std::string s1, std::string s2) {
 	return (true);
 }
 
+/*
+**	Create filename.replace
+*/
 void	filenameReplace(std::string &filename) {
 	size_t pos = filename.find_last_of('.');
 	filename = filename.substr(0, pos) + ".replace";
