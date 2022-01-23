@@ -5,24 +5,34 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/18 14:42:04 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/01/20 22:15:26 by mamaquig         ###   ########.fr       */
+/*   Created: 2022/01/22 15:52:47 by mamaquig          #+#    #+#             */
+/*   Updated: 2022/01/22 18:03:37 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Weapon.hpp"
+#include "HumanA.hpp"
+#include "HumanB.hpp"
+#include <cstdlib>
+
 
 int	main(void) {
-	Zombie z1 = Zombie("Jason");
-	Zombie *z2 = newZombie("Pascal");
-	
-	if (z2 == NULL) {
-		std::cerr << "ERROR: Insufficient memory" << std::endl;
-		return (EXIT_FAILURE);
+	{
+		Weapon	club = Weapon("crude spiked club");
+
+		HumanA	bob("Bob", club);
+		bob.attack();
+		club.setType("some other type of club");
+		bob.attack();
 	}
-	z1.announce();
-	randomChump("toto");
-	z2->announce();
-	delete z2;
+	{
+		Weapon	club = Weapon("crude spiked club");
+		
+		HumanB	jim("Jim");
+		jim.setWeapon(club);
+		jim.attack();
+		club.setType("some other type of club");
+		jim.attack();
+	}
 	return (EXIT_SUCCESS);
 }

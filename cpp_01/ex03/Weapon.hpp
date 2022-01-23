@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/18 14:42:04 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/01/20 22:15:26 by mamaquig         ###   ########.fr       */
+/*   Created: 2022/01/22 15:53:46 by mamaquig          #+#    #+#             */
+/*   Updated: 2022/01/22 18:10:11 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef WEAPON_HPP
+# define WEAPON_HPP
 
-int	main(void) {
-	Zombie z1 = Zombie("Jason");
-	Zombie *z2 = newZombie("Pascal");
-	
-	if (z2 == NULL) {
-		std::cerr << "ERROR: Insufficient memory" << std::endl;
-		return (EXIT_FAILURE);
-	}
-	z1.announce();
-	randomChump("toto");
-	z2->announce();
-	delete z2;
-	return (EXIT_SUCCESS);
-}
+# include <iostream>
+
+class Weapon {
+	public:
+		Weapon(std::string const &weapon_name);
+		~Weapon();
+
+		std::string const	&getType() const;
+		void				setType(std::string const &weapon_name);
+	private:
+		std::string _weapon_type;
+};
+
+#endif

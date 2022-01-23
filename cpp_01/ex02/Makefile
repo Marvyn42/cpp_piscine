@@ -6,11 +6,11 @@
 #    By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/14 03:23:24 by mamaquig          #+#    #+#              #
-#    Updated: 2022/01/18 03:07:53 by mamaquig         ###   ########.fr        #
+#    Updated: 2022/01/21 16:22:56 by mamaquig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	accounts
+NAME		=	adress
 SRC			=	$(wildcard *.cpp)
 OBJ			=	$(SRC:.cpp=.o)
 CC			=	c++

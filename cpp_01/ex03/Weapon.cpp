@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/18 14:42:04 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/01/20 22:15:26 by mamaquig         ###   ########.fr       */
+/*   Created: 2022/01/22 16:12:15 by mamaquig          #+#    #+#             */
+/*   Updated: 2022/01/22 18:04:23 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Weapon.hpp"
 
-int	main(void) {
-	Zombie z1 = Zombie("Jason");
-	Zombie *z2 = newZombie("Pascal");
-	
-	if (z2 == NULL) {
-		std::cerr << "ERROR: Insufficient memory" << std::endl;
-		return (EXIT_FAILURE);
-	}
-	z1.announce();
-	randomChump("toto");
-	z2->announce();
-	delete z2;
-	return (EXIT_SUCCESS);
+Weapon::Weapon(std::string const &weapon_name) : _weapon_type(weapon_name) {
+}
+
+Weapon::~Weapon() {
+}
+
+std::string const &Weapon::getType() const {
+	return (this->_weapon_type);
+}
+
+void	Weapon::setType(std::string const &weapon_name) {
+	this->_weapon_type = weapon_name;
 }

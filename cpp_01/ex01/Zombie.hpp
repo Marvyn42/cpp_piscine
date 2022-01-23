@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/18 14:42:04 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/01/20 22:15:26 by mamaquig         ###   ########.fr       */
+/*   Created: 2022/01/18 14:42:35 by mamaquig          #+#    #+#             */
+/*   Updated: 2022/01/20 21:57:54 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef ZOMBIE_HPP
+# define ZOMBIE_HPP
 
-int	main(void) {
-	Zombie z1 = Zombie("Jason");
-	Zombie *z2 = newZombie("Pascal");
-	
-	if (z2 == NULL) {
-		std::cerr << "ERROR: Insufficient memory" << std::endl;
-		return (EXIT_FAILURE);
-	}
-	z1.announce();
-	randomChump("toto");
-	z2->announce();
-	delete z2;
-	return (EXIT_SUCCESS);
-}
+# include <iostream>
+# include <cstdlib>
+
+class Zombie
+{
+	public:
+		Zombie();
+		~Zombie();
+		
+		void		announce();
+		std::string	const getname();
+		void		setname(std::string name);
+	private:
+		std::string _name;
+};
+
+Zombie*	zombieHorde(int N, std::string name);
+
+#endif
