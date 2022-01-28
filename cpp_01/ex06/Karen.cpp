@@ -6,7 +6,7 @@
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 16:13:36 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/01/24 00:02:45 by mamaquig         ###   ########.fr       */
+/*   Updated: 2022/01/27 22:50:00 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,6 @@ void	Karen::complain(std::string level) {
 										&Karen::_warning, &Karen::_error};
 	size_t		i = 0;
 
-	// for (; i < 4; i++) {
-	// 	if (level == tab[i])
-	// 		break;
-	// }
 	while (level != tab[i])
 		i++;
 	switch (i) {
