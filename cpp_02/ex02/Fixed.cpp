@@ -6,7 +6,7 @@
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 14:31:14 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/01/28 21:53:22 by mamaquig         ###   ########.fr       */
+/*   Updated: 2022/01/29 02:54:04 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,6 @@ bool	Fixed::operator!=(Fixed const &fix) {
 		return (true);
 	return (false);
 }
-
 
 std::ostream &	operator<<(std::ostream &cout, Fixed const & fix) {
 	cout << fix.toFloat();
