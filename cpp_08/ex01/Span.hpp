@@ -6,7 +6,7 @@
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 23:54:03 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/02/26 23:07:09 by mamaquig         ###   ########.fr       */
+/*   Updated: 2022/02/27 00:20:25 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,24 +23,28 @@
 class Span
 {
 	public:
-		Span(const size_t& size);
+		Span(size_t size);
 		Span(Span const & cpy);
 
 		virtual ~Span();
 
-		Span & operator=(Span const & ref);
+		Span &	operator=(Span const & ref);
+		int &	operator[](size_t idx);
+
+		size_t	getSize() const;
 
 		void			addNumber(int entier);
+		bool			value_not_valid(const size_t i);
 		void			shortestSpan();
 		unsigned int	longestSpan();
 		void			addNumbers(std::vector<int>::iterator begin,
 							std::vector<int>::iterator end);
 
 	private:
-		const size_t		_size;
+		size_t				_size;
 		std::vector<int>	_tab;
 };
 
-bool	value_not_valid(const size_t i);
+std::ostream & operator<<(std::ostream & os, Span & ref);
 
 #endif
