@@ -5,29 +5,29 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/22 00:06:55 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/02/22 15:32:48 by mamaquig         ###   ########.fr       */
+/*   Created: 2022/02/22 15:34:37 by mamaquig          #+#    #+#             */
+/*   Updated: 2022/02/23 23:46:35 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "iter.hpp"
-
-#include "iter.hpp"
-
-int	print(char const & c) {
-	return (putchar(c));
-}
-
-int	print(int const & c) {
-	return (putchar(c));
-}
-
+#include "easyfind.hpp"
 
 int	main(void) {
-	char charTab[TAB_SIZE] = {'M', 'a', 'r', 'v', 'y', 'n', '\n'};
-	int intTab[TAB_SIZE] = {'M', 'a', 'r', 'v', 'y', 'n', '\n'};
+	std::list<int>	nbr;
+	std::vector<int> toto(42, 100);
 
-	iter<char>(charTab, TAB_SIZE, print);
-	iter<int>(intTab, TAB_SIZE, print);
+	nbr.push_back(1);
+	nbr.push_back(2);
+	nbr.push_back(3);
+	nbr.push_back(4);
+	nbr.push_back(5);
+	try {
+		std::cout << *easyfind(nbr, 2) << '\n';
+		std::cout << *easyfind(nbr, 1) << '\n';
+		std::cout << *easyfind(toto, 1) << std::endl;
+	}
+	catch (std::exception const& e) {
+		std::cerr << e.what() << std::endl;
+	}
 	return (EXIT_SUCCESS);
 }

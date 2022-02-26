@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iter.hpp                                           :+:      :+:    :+:   */
+/*   easyfind.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/22 00:07:19 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/02/22 15:31:32 by mamaquig         ###   ########.fr       */
+/*   Created: 2022/02/22 15:34:59 by mamaquig          #+#    #+#             */
+/*   Updated: 2022/02/24 14:01:24 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ITER_HPP
-# define ITER_HPP
+#ifndef EASYFIND_HPP
+# define EASYFIND_HPP
 
 # include <iostream>
-# include <stdlib.h>
-# include <stdio.h>
+# include <exception>
+# include <algorithm>
+# include <list>
+# include <vector>
 
-# define TAB_SIZE 7
 
-template< typename T >
-void	iter(T *addr, size_t size, int (*f)(T const & elem)) {
-	for (size_t i = 0; i < size; i++) {
-		(*f)(addr[i]);
+template<typename T>
+typename T::iterator	easyfind(T & container, int const & entier) {
+	typename T::iterator it = container.begin();
+	for (; it != container.end(); it++) {
+		if (*it == entier)
+			return (it);
 	}
+	throw std::runtime_error("Integer not found");
+	return (it);
 }
 
 #endif

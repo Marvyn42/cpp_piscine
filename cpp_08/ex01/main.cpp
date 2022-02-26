@@ -5,29 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/22 00:06:55 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/02/22 15:32:48 by mamaquig         ###   ########.fr       */
+/*   Created: 2022/02/23 23:53:40 by mamaquig          #+#    #+#             */
+/*   Updated: 2022/02/26 20:06:25 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "iter.hpp"
-
-#include "iter.hpp"
-
-int	print(char const & c) {
-	return (putchar(c));
-}
-
-int	print(int const & c) {
-	return (putchar(c));
-}
-
+#include "Span.hpp"
 
 int	main(void) {
-	char charTab[TAB_SIZE] = {'M', 'a', 'r', 'v', 'y', 'n', '\n'};
-	int intTab[TAB_SIZE] = {'M', 'a', 'r', 'v', 'y', 'n', '\n'};
-
-	iter<char>(charTab, TAB_SIZE, print);
-	iter<int>(intTab, TAB_SIZE, print);
+	try {
+		Span test(3);
+		test.addNumber(10);
+		test.addNumber(20);
+		test.addNumber(30);
+		std::cout << test.longestSpan() << std::endl;
+	} catch(std::exception const & e) {
+		std::cerr << e.what() << std::endl;
+	}
 	return (EXIT_SUCCESS);
 }
