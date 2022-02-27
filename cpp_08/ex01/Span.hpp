@@ -6,7 +6,7 @@
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 23:54:03 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/02/27 00:20:25 by mamaquig         ###   ########.fr       */
+/*   Updated: 2022/02/27 22:13:04 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ class Span
 
 		void			addNumber(int entier);
 		bool			value_not_valid(const size_t i);
-		void			shortestSpan();
+		unsigned int	shortestSpan();
 		unsigned int	longestSpan();
 		void			addNumbers(std::vector<int>::iterator begin,
 							std::vector<int>::iterator end);
