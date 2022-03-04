@@ -6,11 +6,11 @@
 #    By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/14 03:23:24 by mamaquig          #+#    #+#              #
-#    Updated: 2022/02/22 04:03:00 by mamaquig         ###   ########.fr        #
+#    Updated: 2022/03/04 14:20:14 by mamaquig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	Easy
+NAME		=	MutantStack
 SRC			=	$(wildcard *.cpp)
 OBJ			=	$(SRC:.cpp=.o)
 CC			=	c++
