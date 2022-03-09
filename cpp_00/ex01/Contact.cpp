@@ -6,7 +6,7 @@
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 14:13:56 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/01/16 21:43:32 by mamaquig         ###   ########.fr       */
+/*   Updated: 2022/03/01 15:41:41 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ bool	Contact::print_infos(unsigned int index, Contact contact[8]) const {
 	std::string		tmp;
 	unsigned int	i;
 
-	std::cout << "(っ◔◡◔)っ: 𝒫𝓁𝑒𝒶𝓈𝑒, 𝓈𝑒𝓁𝑒𝒸𝓉 𝒶𝓃 𝒾𝓃𝒹𝑒𝓍 𝒷𝑒𝓉𝓌𝑒𝑒𝓃 𝟢 𝒶𝓃𝒹 " << index - 1;
+	std::cout << "(っ◔◡◔)っ: ℙ𝕝𝕖𝕒𝕤𝕖, 𝕤𝕖𝕝𝕖𝕔𝕥 𝕒𝕟 𝕚𝕟𝕕𝕖𝕩 𝕓𝕖𝕥𝕨𝕖𝕖𝕟 0 𝕒𝕟𝕕 " << index - 1;
 	std::cout << std::endl << ">";
 	if (!std::getline(std::cin, tmp)) {
 			std::cerr << "Error getline. Exit." << std::endl;
@@ -74,19 +74,19 @@ bool	Contact::print_infos(unsigned int index, Contact contact[8]) const {
 	}
 	i = (unsigned int)atoi(tmp.c_str());
 	while (tmp.length() != 1 || std::isdigit(tmp.at(0)) == 0 || i >= index) {
-		std::cout << "(╯`Д´）╯︵ ┻━┻: 𝒫𝓁𝑒𝒶𝓈𝑒, 𝒹𝑜𝓃'𝓉 𝒻𝓊𝒸𝓀 𝓌𝒾𝓉𝒽 𝓂 𝑒..." << std::endl;
-		std::cout << "𝓈𝑒𝓁𝑒𝒸𝓉 𝒶𝓃 𝒾𝓃𝒹𝑒𝓍 𝒷𝑒𝓉𝓌𝑒𝑒𝓃 𝟢 𝒶𝓃𝒹 " << index - 1 << std::endl << ">";
+		std::cout << "(╯`Д´）╯︵ ┻━┻: ℙ𝕝𝕖𝕒𝕤𝕖, 𝕕𝕠𝕟'𝕥 𝕗𝕦𝕔𝕜 𝕨𝕚𝕥𝕙 𝕞 𝕖..." << std::endl;
+		std::cout << "𝕤𝕖𝕝𝕖𝕔𝕥 𝕒𝕟 𝕚𝕟𝕕𝕖𝕩 𝕓𝕖𝕥𝕨𝕖𝕖𝕟 0 𝕒𝕟𝕕 " << index - 1 << std::endl << ">";
 		if (!std::getline(std::cin, tmp)) {
 			std::cerr << "Error getline. Exit." << std::endl;
 			return (false);
 		}
 		i = (unsigned int)atoi(tmp.c_str());
 	}
-	std::cout << "𝐻𝒾𝓈 𝒻𝒾𝓇𝓈𝓉 𝓃𝒶𝓂 𝑒: [" << contact[i]._first_name << "]" << std::endl;
-	std::cout << "𝐻𝒾𝓈 𝓁𝒶𝓈𝓉 𝓃𝒶𝓂 𝑒: [" << contact[i]._last_name << "]" << std::endl;
-	std::cout << "𝐻𝒾𝓈 𝓃𝒾𝒸𝓀𝓃𝒶𝓂 𝑒: [" << contact[i]._nickname << "]" << std::endl;
-	std::cout << "𝐻𝒾𝓈 𝓅𝒽𝑜𝓃𝑒 𝓃𝓊𝓂 𝒷𝑒𝓇: [" << contact[i]._phone_number << "]" << std::endl;
-	std::cout << "𝐻𝒾𝓈 𝒹𝒶𝓇𝓀𝓈𝑒𝒸𝓇𝑒𝓉: [" << contact[i]._darkest_secret << "]" << std::endl;
+	std::cout << "ℍ𝕚𝕤 𝕗𝕚𝕣𝕤𝕥 𝕟𝕒𝕞 𝕖:\t[" << contact[i]._first_name << "]" << std::endl;
+	std::cout << "ℍ𝕚𝕤 𝕝𝕒𝕤𝕥 𝕟𝕒𝕞 𝕖:\t\t[" << contact[i]._last_name << "]" << std::endl;
+	std::cout << "ℍ𝕚𝕤 𝕟𝕚𝕔𝕜𝕟𝕒𝕞 𝕖:\t\t[" << contact[i]._nickname << "]" << std::endl;
+	std::cout << "ℍ𝕚𝕤 𝕡𝕙𝕠𝕟𝕖 𝕟𝕦𝕞 𝕓𝕖𝕣:\t[" << contact[i]._phone_number << "]" << std::endl;
+	std::cout << "ℍ𝕚𝕤 𝕕𝕒𝕣𝕜𝕤𝕖𝕔𝕣𝕖𝕥:\t\t[" << contact[i]._darkest_secret << "]" << std::endl;
 	return (true);
 }
 

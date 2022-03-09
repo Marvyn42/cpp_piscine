@@ -6,7 +6,7 @@
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 16:12:04 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/01/23 20:04:43 by mamaquig         ###   ########.fr       */
+/*   Updated: 2022/03/01 19:31:23 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	main(int ac, char **av) {
 	if (ac != 2) {
-		std::cerr << "Usage:" << std::endl << "./Karen [LEVEL]" << std::endl;
+		std::cerr << "Usage:" << std::endl
+			<< "./Karen [DEBUG/INFO/WARNING/ERROR]" << std::endl;
 		return (EXIT_FAILURE);
 	}
 	Karen	hysterical;

@@ -6,7 +6,7 @@
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 03:24:29 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/01/19 16:43:28 by mamaquig         ###   ########.fr       */
+/*   Updated: 2022/03/01 16:05:56 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	Account::displayAccountsInfos( void ) {
 	std::cout << "accounts:" << getNbAccounts() << ";";
 	std::cout << "total:" << getTotalAmount() << ";";
 	std::cout << "deposits:" << getNbDeposits() << ";";
-	std::cout << "withdrawals:" << getNbWithdrawals() << ";" << std::endl;
+	std::cout << "withdrawals:" << getNbWithdrawals() << std::endl;
 }
 
 /*
@@ -103,6 +103,7 @@ void	Account::_displayTimestamp( void ) {
 	dt = localtime(&tt);
 	strftime(s, 16, "%Y%m%d_%H%M%S", dt);
 	std::cout << "[" << s << "]" << " ";
+	// std::cout << "[19920104_091532]" << " ";
 }
 
 /*
@@ -112,7 +113,7 @@ void	Account::makeDeposit( int deposit ) {
 	_displayTimestamp();
 	std::cout << "index:" << _accountIndex << ";";
 	std::cout << "p_amount:" << checkAmount() << ";";
-	std::cout << "deposits:" << deposit << ";";
+	std::cout << "deposit:" << deposit << ";";
 	_amount += deposit;
 	std::cout << "amount:" << checkAmount()<< ";";
 	_nbDeposits += 1;

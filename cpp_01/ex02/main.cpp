@@ -6,7 +6,7 @@
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 22:24:09 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/01/22 15:59:05 by mamaquig         ###   ########.fr       */
+/*   Updated: 2022/03/01 18:55:11 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	main(void) {
 	std::cout << &stringREF << std::endl << std::endl;
 
 	std::cout << string << std::endl;
-	std::cout << string << std::endl;
+	std::cout << *stringPTR << std::endl;
+	std::cout << stringREF << std::endl;
 	return (EXIT_FAILURE);
 }

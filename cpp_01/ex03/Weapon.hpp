@@ -6,7 +6,7 @@
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:53:46 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/01/22 18:10:11 by mamaquig         ###   ########.fr       */
+/*   Updated: 2022/03/01 19:07:55 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class Weapon {
 		std::string const	&getType() const;
 		void				setType(std::string const &weapon_name);
 	private:
-		std::string _weapon_type;
+		std::string type;
 };
 
 #endif

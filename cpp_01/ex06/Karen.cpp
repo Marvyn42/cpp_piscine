@@ -6,7 +6,7 @@
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 16:13:36 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/01/27 22:50:00 by mamaquig         ###   ########.fr       */
+/*   Updated: 2022/03/01 19:37:00 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	Karen::complain(std::string level) {
 										&Karen::_warning, &Karen::_error};
 	size_t		i = 0;
 
-	while (level != tab[i])
+	while (level != tab[i] && i < 4)
 		i++;
 	switch (i) {
 		case 0:
@@ -38,6 +38,9 @@ void	Karen::complain(std::string level) {
 			__attribute__ ((fallthrough));
 		case 3:
 			(this->*f[3])();
+		default:
+			std::cerr << "[ Probably complaining about insignificant problems ]"
+				<< std::endl;
 	}
 }
 

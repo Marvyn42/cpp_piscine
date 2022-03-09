@@ -6,31 +6,59 @@
 #    By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/10 14:59:29 by mamaquig          #+#    #+#              #
-#    Updated: 2022/01/11 00:02:43 by mamaquig         ###   ########.fr        #
+#    Updated: 2022/03/01 16:29:16 by mamaquig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	megaphone
 SRC			=	megaphone.cpp
-OBJ			=	$(SRC:.cpp=.o)
-CC			=	c++
-HEADER		=	-Iheader
-CFLAGS		=	-Wall -Wextra -Werror -std=c++98
+OBJ			=	$(SRC:$S%.cpp=$O%.o)
+DEP			=	$(SRC:$S%.cpp=$D%.d)
+
+S		=	
+I		=	./
+O		=	obj/
+D		=	dep/
+
+CXX			=	c++
+
+CXXFLAGS	+=	-I$I
+CXXFLAGS	+=	-Wall -Wextra -Werror -std=c++98
+
+RM			=	/bin/rm -f
+RMDIR		=	/bin/rm -Rf
+
+.PHONY: all clean fclean re
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	@$(CC) $(CFLAGS) $(HEADER) -o $@ $(OBJ)
+$O:
+	@mkdir -p $@
 
-%.o: %.cpp
-	@$(CC) $(CFLAGS) $(HEADER) -c $< -o $@
+$(OBJ): | $O
+
+$(OBJ): $O%.o: $S%.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+$D:
+	@mkdir -p $@
+
+$(DEP): | $D
+
+$(DEP): $D%.d: $S%.cpp
+	$(CXX) $(CXXFLAGS) -MM -MF $@ -MT "$O$*.o $@" $<
+
+$(NAME): $(OBJ)
+	$(CXX) $(LDFLAGS) $^ -o $@
 
 clean:
-	@rm -f $(OBJ)
+	$(RMDIR) $(wildcard $(NAME).dSYM)
+	$(RMDIR) $O
+	$(RM) $(wildcard $(DEP))
+	$(RMDIR) $D
 
 fclean: clean
-	@rm -f $(NAME)
+	$(RM) $(NAME)
 
-re: fclean all
-
-.PHONY:	all clean fclean re
+re: fclean
+	$(MAKE)
