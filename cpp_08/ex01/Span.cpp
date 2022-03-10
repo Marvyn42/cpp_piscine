@@ -6,7 +6,7 @@
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 23:55:10 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/02/27 00:31:35 by mamaquig         ###   ########.fr       */
+/*   Updated: 2022/02/27 22:36:53 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,15 +75,29 @@ void	Span::addNumber(int entier) {
 
 void	Span::addNumbers(std::vector<int>::iterator begin,
 			std::vector<int>::iterator end) {
-	//throw la bonne erreur si end n'est pas la fin de begin ?
-	if (this->_tab.size() + std::distance(begin, end) >= this->_size)
+	if (this->_tab.size() + std::distance(begin, end) > this->_size)
 		throw std::runtime_error("No slot available.");
 	this->_tab.insert(this->_tab.begin(), begin, end);
 }
 
-void	Span::shortestSpan() {
-	if (this->_tab.size() <= 1)
+unsigned int	Span::shortestSpan() {
+	if (this->_tab.size() < 2)
 		throw std::runtime_error("Not enough integer to find a distance.");
+
+	unsigned int span = std::numeric_limits<unsigned int>::max();
+
+	for (std::vector<int>::const_iterator it = this->_tab.begin();
+		 it != this->_tab.end();
+		 it++) {
+		for (std::vector<int>::const_iterator it2 = this->_tab.begin();
+			 it2 != this->_tab.end();
+			 it2++) {
+			if (it != it2
+				&& static_cast<unsigned int>(std::abs(*it - *it2)) < span)
+				span = std::abs(*it - *it2);
+		}
+	}
+	return (span);
 }
 
 unsigned int	Span::longestSpan() {
