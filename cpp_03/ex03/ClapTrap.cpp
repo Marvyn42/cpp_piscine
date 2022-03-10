@@ -6,7 +6,7 @@
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 22:05:44 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/02/01 02:18:22 by mamaquig         ###   ########.fr       */
+/*   Updated: 2022/03/10 19:16:51 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ ClapTrap::ClapTrap(ClapTrap const &cpy) {
 ClapTrap::~ClapTrap() {
 	std::cout << "Default CLAPTRAP destructor" << std::endl;
 	if (this->_original == false)
-		getSatus(this->_Type);
+		getStatus(this->_Type);
 }
 
 /* ************************************************************************** */
@@ -57,7 +57,7 @@ ClapTrap const &	ClapTrap::operator=(ClapTrap const &ref) {
 }
 
 /* ************************************************************************** */
-/*                                GET FUNCTIONS                                */
+/*                                 ACCESSORS                                  */
 /* ************************************************************************** */
 
 /*
@@ -102,6 +102,13 @@ std::string const & ClapTrap::getName() const {
 	return (this->_Name);
 }
 
+/*
+**	Renvoi le type
+*/
+std::string const & ClapTrap::getType() const {
+	return (this->_Type);
+}
+
 /* ************************************************************************** */
 /* ************************************************************************** */
 
@@ -109,8 +116,14 @@ std::string const & ClapTrap::getName() const {
 **	Effectue une attaque
 */
 void	ClapTrap::attack(std::string const & target) {
-	std::cout << this->_Type << " " << getName() << " attacks " << target << ", causing "
+	if (!this->_EnergyPoints) {
+		std::cout << this->_Type << " " << this->_Name
+			<< " is exhausted, he can no longer do something.\n" << std::endl;
+		return ;
+	}
+	std::cout << "ClapTrap " << this->_Name << " attacks " << target << ", causing "
 		<< getAD() << "🗡️  DMG." << std::endl;
+	this->_EnergyPoints--;
 }
 
 /*
@@ -135,18 +148,17 @@ void	ClapTrap::takeDamage(unsigned int amount) {
 **	Se soigne de amount PV
 */
 void	ClapTrap::beRepaired(unsigned int amount) {
-	unsigned int	tmp = amount;
-	std::cout << this->_Type << " " << getName() << " heal himself from " << RED "❤️ "
-		<< getHP() << "/" << getMax_HP() << NC " to ";
-	while (this->_HitPoints < _Max_HP && amount) {
-		this->_HitPoints += 1;
-		this->_EnergyPoints -= 1;
-		amount--;
-	}
-	std::cout << RED "❤️ " << getHP() << "/" << getMax_HP() << NC
-		<< " using " CYN << tmp - amount << "⚡EP." NC << std::endl;
-	std::cout << "He's left ";
-	std::cout << CYN "⚡:" << getEP() << "/" << getMax_HP() << NC << std::endl << std::endl;
+	if (this->_HitPoints != getMax_HP() && this->_EnergyPoints) {
+		std::cout << "ClapTrap " << this->_Name << " heal himself from " << RED "❤️ "
+			<< this->_HitPoints << "/" << getMax_HP() << NC " to ";
+		while (this->_HitPoints < getMax_HP() && amount) {
+			this->_HitPoints += 1;
+			amount--;
+		}
+		this->_EnergyPoints--;
+		std::cout << RED "❤️ " << this->_HitPoints << "/" << getMax_HP() << NC
+			<< std::endl;
+		}
 }
 
 /*
@@ -159,16 +171,9 @@ void	ClapTrap::missAttack() const {
 /*
 **	Affiche la vie, l'énergie et l'attaque du player
 */
-void	ClapTrap::getSatus(std::string type) const {
+void	ClapTrap::getStatus(std::string type) const {
 	std::cout << "\t" << type << " " << REDB << getName() << NC << std::endl;
 	std::cout << RED "❤️  :" << getHP() << "/" << getMax_HP() << NC;
 	std::cout << CYN "\t⚡:" << getEP() << "/" << getMax_EP() << NC << " ";
 	std::cout << GRN "\t🗡️  :"<< getAD() << NC << std::endl;
-}
-
-/*
-**	Modifie la valeur de l'attaque
-*/
-void	ClapTrap::setAD(unsigned int const amount) {
-	this->_AttackDamage = amount;
 }

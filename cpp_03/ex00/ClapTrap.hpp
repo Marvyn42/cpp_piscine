@@ -6,7 +6,7 @@
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 22:04:55 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/01/31 19:23:20 by mamaquig         ###   ########.fr       */
+/*   Updated: 2022/03/10 15:45:37 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ class ClapTrap {
 		void	attack(std::string const & target);
 		void	takeDamage(unsigned int amount);
 		void	beRepaired(unsigned int amount);
-		void	getSatus() const;
+		void	getStatus() const;
 		void	missAttack() const;
 	private:
 		std::string		_Name;

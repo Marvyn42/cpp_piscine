@@ -6,7 +6,7 @@
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 22:00:31 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/01/31 22:45:42 by mamaquig         ###   ########.fr       */
+/*   Updated: 2022/03/10 17:15:58 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 class FragTrap : public ClapTrap {
 	public:
-		FragTrap(std::string name);
+		FragTrap(std::string name = "NONAME");
 		FragTrap(FragTrap const & ref);
 
 		virtual ~FragTrap();

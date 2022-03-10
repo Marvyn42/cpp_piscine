@@ -6,7 +6,7 @@
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 03:13:04 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/01/31 22:36:04 by mamaquig         ###   ########.fr       */
+/*   Updated: 2022/03/10 17:02:30 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,6 @@
 /* ************************************************************************** */
 /*                                CONSTRUCTORS                                */
 /* ************************************************************************** */
-
-ScavTrap::ScavTrap(ScavTrap const &cpy) : ClapTrap::ClapTrap() {
-	*this = cpy;
-	std::cout << "Cpy SCAVTRAP constructor" << std::endl;
-}
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap::ClapTrap() {
 	std::cout << "Param SCAVTRAP constructor" << std::endl;
@@ -30,7 +25,12 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap::ClapTrap() {
 	_Max_HP = 100;
 	_Max_EP = 50;
 	_Type = "ScavTrap";
-	getSatus(this->_Type);
+	getStatus(this->_Type);
+}
+
+ScavTrap::ScavTrap(ScavTrap const &cpy) : ClapTrap::ClapTrap() {
+	*this = cpy;
+	std::cout << "Cpy SCAVTRAP constructor" << std::endl;
 }
 
 /* ************************************************************************** */
@@ -39,7 +39,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap::ClapTrap() {
 
 ScavTrap::~ScavTrap() {
 	std::cout << "Default SCAVTRAP destructor" << std::endl;
-	getSatus(this->_Type);
+	getStatus(this->_Type);
 }
 
 /* ************************************************************************** */
@@ -63,15 +63,21 @@ ScavTrap & ScavTrap::operator=(ScavTrap const &ref) {
 /*
 **	Je sais pas, je comprends pas en quoi c'est utile...
 */
-void	ScavTrap::guardGate(void) const {
+void ScavTrap::guardGate(void) const {
 	std::cout << this->_Type << " " << getName()
-		<< " has enterred in Gate keeper mode." << std::endl << std::endl;
+		<< " has enterred in Gate keeper mode." << std::endl;
 }
 
 /*
 **	Affiche l'attaque de ScavTrap
 */
-void	ScavTrap::attack(std::string const & target) {
-	std::cout << this->_Type << " " << getName() << " charge " << target << ", causing "
+void ScavTrap::attack(std::string const & target) {
+	if (!this->_EnergyPoints) {
+		std::cout << this->_Type << " " << this->_Name
+			<< " is exhausted, he can no longer do something.\n" << std::endl;
+		return ;
+	}
+	std::cout << this->_Type << " " << this->_Name << " BOMBARD " << target << ", causing "
 		<< getAD() << "🗡️  DMG." << std::endl;
+	this->_EnergyPoints--;
 }

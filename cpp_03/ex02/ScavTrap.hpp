@@ -6,7 +6,7 @@
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 03:13:01 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/01/31 22:35:05 by mamaquig         ###   ########.fr       */
+/*   Updated: 2022/03/10 17:14:19 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 class ScavTrap : public ClapTrap
 {
 	public:
+		ScavTrap(std::string name = "NONAME");
 		ScavTrap(ScavTrap const &cpy);
-		ScavTrap(std::string name);
 
 		virtual ~ScavTrap();
 

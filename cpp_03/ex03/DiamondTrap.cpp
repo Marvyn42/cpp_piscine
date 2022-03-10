@@ -6,7 +6,7 @@
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 22:50:42 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/02/01 02:21:53 by mamaquig         ###   ########.fr       */
+/*   Updated: 2022/03/10 19:16:04 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ DiamondTrap::DiamondTrap(std::string name) :	ClapTrap(name), FragTrap(name),
 	this->_Max_HP = FragTrap::getMax_HP();
 	this->_Max_EP = ScavTrap::getMax_EP();
 	this->_Type = "DiamondTrap";
-	FragTrap::getSatus(this->_Type);
+	FragTrap::getStatus(this->_Type);
 }
 
 /* ************************************************************************** */
@@ -43,7 +43,7 @@ DiamondTrap::DiamondTrap(std::string name) :	ClapTrap(name), FragTrap(name),
 
 DiamondTrap::~DiamondTrap() {
 	std::cout << "Default DiamondTrap destructor" << std::endl;
-	FragTrap::getSatus("DiamondTrap");
+	FragTrap::getStatus("DiamondTrap");
 }
 
 /* ************************************************************************** */

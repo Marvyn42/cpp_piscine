@@ -6,7 +6,7 @@
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 03:13:04 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/02/01 02:17:48 by mamaquig         ###   ########.fr       */
+/*   Updated: 2022/03/10 19:16:04 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap::ClapTrap() {
 ScavTrap::~ScavTrap() {
 	std::cout << "Default SCAVTRAP destructor" << std::endl;
 	if (this->_original == false)
-		getSatus(this->_Type);
+		getStatus(this->_Type);
 }
 
 /* ************************************************************************** */
@@ -78,6 +78,12 @@ void	ScavTrap::guardGate(void) const {
 **	Affiche l'attaque de ScavTrap
 */
 void	ScavTrap::attack(std::string const & target) {
-	std::cout << this->_Type << " " << getName() << " charge " << target << ", causing "
+	if (!this->_EnergyPoints) {
+		std::cout << this->_Type << " " << this->_Name
+			<< " is exhausted, he can no longer do something.\n" << std::endl;
+		return ;
+	}
+	std::cout << this->_Type << " " << this->_Name << " BOMBARD " << target << ", causing "
 		<< getAD() << "🗡️  DMG." << std::endl;
+	this->_EnergyPoints--;
 }

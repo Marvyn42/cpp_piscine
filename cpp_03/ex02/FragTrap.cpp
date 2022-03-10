@@ -6,7 +6,7 @@
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 22:01:02 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/01/31 22:47:24 by mamaquig         ###   ########.fr       */
+/*   Updated: 2022/03/10 18:51:47 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,6 @@
 /* ************************************************************************** */
 /*                                CONSTRUCTORS                                */
 /* ************************************************************************** */
-
-FragTrap::FragTrap(FragTrap const &cpy) : ClapTrap::ClapTrap() {
-	*this = cpy;
-	std::cout << "Cpy FragTrap constructor" << std::endl;
-}
 
 FragTrap::FragTrap(std::string name) : ClapTrap::ClapTrap() {
 	std::cout << "Param FragTrap constructor" << std::endl;
@@ -30,7 +25,12 @@ FragTrap::FragTrap(std::string name) : ClapTrap::ClapTrap() {
 	_Max_HP = 100;
 	_Max_EP = 100;
 	_Type = "FragTrap";
-	getSatus(this->_Type);
+	getStatus(this->_Type);
+}
+
+FragTrap::FragTrap(FragTrap const &cpy) : ClapTrap::ClapTrap() {
+	*this = cpy;
+	std::cout << "Cpy FragTrap constructor" << std::endl;
 }
 
 /* ************************************************************************** */
@@ -39,7 +39,7 @@ FragTrap::FragTrap(std::string name) : ClapTrap::ClapTrap() {
 
 FragTrap::~FragTrap() {
 	std::cout << "Default FragTrap destructor" << std::endl;
-	getSatus(this->_Type);
+	getStatus(this->_Type);
 }
 
 /* ************************************************************************** */
@@ -64,8 +64,14 @@ FragTrap & FragTrap::operator=(FragTrap const &ref) {
 **	Affiche l'attaque de FragTrap
 */
 void	FragTrap::attack(std::string const & target) {
-	std::cout << this->_Type << " " << getName() << " BOMBARD " << target << ", causing "
+	if (!this->_EnergyPoints) {
+		std::cout << this->_Type << " " << this->_Name
+			<< " is exhausted, he can no longer do something.\n" << std::endl;
+		return ;
+	}
+	std::cout << this->_Type << " " << this->_Name << " BOMBARD " << target << ", causing "
 		<< getAD() << "🗡️  DMG." << std::endl;
+	this->_EnergyPoints--;
 }
 
 

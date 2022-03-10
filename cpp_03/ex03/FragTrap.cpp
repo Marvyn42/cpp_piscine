@@ -6,7 +6,7 @@
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 22:01:02 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/02/01 18:08:31 by mamaquig         ###   ########.fr       */
+/*   Updated: 2022/03/10 19:16:04 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ FragTrap::FragTrap(std::string name) : ClapTrap::ClapTrap() {
 FragTrap::~FragTrap() {
 	std::cout << "Default FragTrap destructor" << std::endl;
 	if (this->_original == false)
-		getSatus(this->_Type);
+		getStatus(this->_Type);
 }
 
 /* ************************************************************************** */
@@ -77,8 +77,14 @@ u_int32_t	FragTrap::getStaticAD() const {
 **	Affiche l'attaque de FragTrap
 */
 void	FragTrap::attack(std::string const & target) {
-	std::cout << this->_Type << " " << getName() << " BOMBARD " << target << ", causing "
+	if (!this->_EnergyPoints) {
+		std::cout << this->_Type << " " << this->_Name
+			<< " is exhausted, he can no longer do something.\n" << std::endl;
+		return ;
+	}
+	std::cout << this->_Type << " " << this->_Name << " BOMBARD " << target << ", causing "
 		<< getAD() << "🗡️  DMG." << std::endl;
+	this->_EnergyPoints--;
 }
 
 

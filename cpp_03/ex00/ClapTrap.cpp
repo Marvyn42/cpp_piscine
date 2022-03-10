@@ -6,7 +6,7 @@
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 22:05:44 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/01/30 21:35:16 by mamaquig         ###   ########.fr       */
+/*   Updated: 2022/03/10 15:57:25 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ ClapTrap::ClapTrap() {
 ClapTrap::ClapTrap(std::string name) :	_Name(name), _HitPoints(HP_MAX),
 										_EnergyPoints(HP_MAX), _AttackDamage(AD),
 										_original(true) {
-	getSatus();
+	getStatus();
 }
 
 ClapTrap::ClapTrap(ClapTrap const &cpy) {
@@ -36,7 +36,7 @@ ClapTrap::ClapTrap(ClapTrap const &cpy) {
 
 ClapTrap::~ClapTrap() {
 	if (this->_original == false)
-		getSatus();
+		getStatus();
 }
 
 /* ************************************************************************** */
@@ -52,7 +52,7 @@ ClapTrap const &	ClapTrap::operator=(ClapTrap const &ref) {
 }
 
 /* ************************************************************************** */
-/*                                GET FUNCTIONS                                */
+/*                                 ACCESSORS                                  */
 /* ************************************************************************** */
 
 /*
@@ -90,52 +90,59 @@ std::string const & ClapTrap::getName() const {
 **	Effectue une attaque
 */
 void	ClapTrap::attack(std::string const & target) {
-	std::cout << "ClapTrap " << getName() << " attacks " << target << ", causing "
+	if (!this->_EnergyPoints) {
+		std::cout << "ClapTrap " << this->_Name
+			<< " is exhausted, he can no longer do something.\n" << std::endl;
+		return ;
+	}
+	std::cout << "ClapTrap " << this->_Name << " attacks " << target << ", causing "
 		<< getAD() << "🗡️  DMG." << std::endl;
+	this->_EnergyPoints--;
 }
 
 /*
 **	Reçois les dégats d'une attaque
 */
 void	ClapTrap::takeDamage(unsigned int amount) {
-	std::cout << "ClapTrap " << getName() << " has been attacked, causing "
+	std::cout << "ClapTrap " << this->_Name << " has been attacked, causing "
 	<< amount << "🩸 DMG." << std::endl;
 	if (this->_HitPoints <= amount) {
 		this->_HitPoints = 0;
-		std::cout << "💀 ClapTrap " << getName() << " DIED 💀" << std::endl << std::endl;
+		std::cout << "💀 ClapTrap " << this->_Name << " DIED 💀" << std::endl << std::endl;
 		return ;
 	}
 	else
 		this->_HitPoints -= amount;
 	std::cout << "He's left ";
-	std::cout << RED "❤️  :" << getHP() << "/" << HP_MAX << NC << "" << std::endl << std::endl;
+	std::cout << RED "❤️  :" << this->_HitPoints << "/" << HP_MAX << NC << ""
+		<< '\n' << std::endl;
 }
 
 /*
 **	Se soigne de amount PV
 */
 void	ClapTrap::beRepaired(unsigned int amount) {
-	unsigned int	tmp = amount;
-	std::cout << "ClapTrap " << getName() << " heal himself from " << RED "❤️ "
-		<< getHP() << "/" << HP_MAX << NC " to ";
-	while (this->_HitPoints < HP_MAX && amount) {
-		this->_HitPoints += 1;
-		this->_EnergyPoints -= 1;
-		amount--;
-	}
-	std::cout << RED "❤️ " << getHP() << "/" << HP_MAX << NC
-		<< " using " CYN << tmp - amount << "⚡EP." NC << std::endl;
-	std::cout << "He's left ";
-	std::cout << CYN "⚡:" << getEP() << "/" << HP_MAX << NC << std::endl << std::endl;
+	if (this->_HitPoints != HP_MAX && this->_EnergyPoints) {
+		std::cout << "ClapTrap " << this->_Name << " heal himself from " << RED "❤️ "
+			<< this->_HitPoints << "/" << HP_MAX << NC " to ";
+		while (this->_HitPoints < HP_MAX && amount) {
+			this->_HitPoints += 1;
+			amount--;
+		}
+		this->_EnergyPoints--;
+		std::cout << RED "❤️ " << this->_HitPoints << "/" << HP_MAX << NC
+			<< std::endl;
+		}
 }
 
 void	ClapTrap::missAttack() const {
-	std::cout << "❌ " << this->_Name << " miss his attack ❌" << std::endl << std::endl;
+	std::cout << "❌ " << this->_Name << " miss his attack ❌"
+		<< '\n' << std::endl;
 }
 
-void	ClapTrap::getSatus() const {
-	std::cout << "\t" << "ClapTrap " << REDB << getName() << NC << std::endl;
-	std::cout << RED "❤️  :" << getHP() << "/" << HP_MAX << NC;
-	std::cout << CYN "\t⚡:" << getEP() << "/" << HP_MAX << NC << " ";
+void	ClapTrap::getStatus() const {
+	std::cout << "\t" << "ClapTrap " << REDB << this->_Name << NC << std::endl;
+	std::cout << RED "❤️  :" << this->_HitPoints << "/" << HP_MAX << NC;
+	std::cout << CYN "\t⚡:" << this->_EnergyPoints << "/" << HP_MAX << NC << " ";
 	std::cout << GRN "\t🗡️  :"<< getAD() << NC << std::endl;
 }

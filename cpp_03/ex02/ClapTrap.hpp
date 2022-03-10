@@ -6,7 +6,7 @@
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 22:04:55 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/01/31 21:44:20 by mamaquig         ###   ########.fr       */
+/*   Updated: 2022/03/10 17:23:36 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,12 @@
 # define CYN "\e[0;36m"
 # define REDB "\e[41m"
 
+# define AD		0
+
 class ClapTrap {
 	public:
-		ClapTrap();
+		ClapTrap(std::string name = "NONAME");
 		ClapTrap(ClapTrap const &cpy);
-		ClapTrap(std::string name);
 
 		ClapTrap const &	operator=(ClapTrap const &ref);
 		
@@ -39,13 +40,13 @@ class ClapTrap {
 		unsigned int const & getMax_EP() const;
 		unsigned int const & getAD() const;
 		std::string const & getName() const;
+		std::string const & getType() const;
 
 		void	attack(std::string const & target);
 		void	takeDamage(unsigned int amount);
 		void	beRepaired(unsigned int amount);
-		void	getSatus(std::string type) const;
+		void	getStatus(std::string type) const;
 		void	missAttack() const;
-		void	setAD(unsigned int const amount);
 		
 	protected:
 		std::string		_Name;
