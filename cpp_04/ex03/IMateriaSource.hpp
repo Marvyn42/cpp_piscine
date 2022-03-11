@@ -6,7 +6,7 @@
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 23:05:50 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/02/08 14:03:45 by mamaquig         ###   ########.fr       */
+/*   Updated: 2022/03/11 14:10:21 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class IMateriaSource
 		virtual ~IMateriaSource() {}
 		virtual void learnMateria(AMateria*) = 0;
 		virtual AMateria* createMateria(std::string const & type) = 0;
-		virtual void		printList() = 0; //TODO: REMOVE
+		virtual void		printList() = 0;
 };
 
 #endif

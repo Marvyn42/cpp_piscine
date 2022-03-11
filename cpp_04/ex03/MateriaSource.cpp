@@ -6,7 +6,7 @@
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 23:14:51 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/02/09 01:11:21 by mamaquig         ###   ########.fr       */
+/*   Updated: 2022/03/11 16:28:16 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,10 @@ void		MateriaSource::printList() {
 }
 
 void		MateriaSource::learnMateria(AMateria *ref) {
-	this->_materias[this->_index] = ref;
-	this->_index += 1;
+	if (this->_index < TAB_SIZE) {
+		this->_materias[this->_index] = ref;
+		this->_index += 1;
+	}
 }
 
 AMateria	*MateriaSource::createMateria(std::string const & type) {

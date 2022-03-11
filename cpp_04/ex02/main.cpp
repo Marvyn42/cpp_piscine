@@ -6,7 +6,7 @@
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:11:10 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/02/06 17:23:25 by mamaquig         ###   ########.fr       */
+/*   Updated: 2022/03/11 13:14:09 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	test_deep_and_shallow() {
 		std::cout << REDB "DÉBUT SCOPE" NC << std::endl;
 		std::cout << "création d'un Dog par copy:"<< std::endl << std::endl;
 		Dog tmp = dogo;
+		tmp.getBrain()->setIdeas("Une nouvelle idée.");
 		std::cout << std::endl << "Affichage de ses idées:" << std::endl;
 		std::cout << "dog tmp ideas = " << std::endl;
 		tmp.getBrain()->printIdeas();
@@ -66,6 +67,7 @@ void	test_deep_and_shallow() {
 
 int main() {
 	AAnimal	*tab[SIZE_TAB];
+	// AAnimal toto; //NOT POSSIBLE
 	
 	std::cout << REDB "\tINITIALISATION du tableau." NC << std::endl;
 	for (size_t i = 0; i < SIZE_TAB; i++) {
