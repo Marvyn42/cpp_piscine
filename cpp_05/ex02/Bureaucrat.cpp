@@ -6,7 +6,7 @@
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:47:08 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/02/15 14:16:35 by mamaquig         ###   ########.fr       */
+/*   Updated: 2022/03/12 14:25:37 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,21 +46,20 @@ Bureaucrat & Bureaucrat::operator=(Bureaucrat const & ref) {
 }
 
 std::ostream & operator<<(std::ostream & os, Bureaucrat & ref) {
-	os << ref.getName() << ", bureaucrat grade " << ref.getGrade()
-		<< "." << std::endl;
+	os << ref.getName() << ", bureaucrat grade " << ref.getGrade() << ".";
 	return (os);
 }
 
 /* ************************************************************************** */
 /* ************************************************************************** */
 
-void	Bureaucrat::signForm(AForm & form) {
+void	Bureaucrat::signForm(AForm & AForm) {
 	try {
-		form.beSigned(*this);
-		std::cout << this->getName() << " signed " << form.getName() << "." << std::endl;
+		AForm.beSigned(*this);
+		std::cout << this->getName() << " signed " << AForm.getName() << "." << std::endl;
 	}
 	catch (std::exception const & e) {
-		std::cerr << this->getName() << " couldn't sign " <<  form.getName() << " because "
+		std::cerr << this->getName() << " couldn't sign " <<  AForm.getName() << " because "
 			<< e.what() << std::endl;
 	}
 }
@@ -94,4 +93,12 @@ std::string	Bureaucrat::getName() const {
 
 uint32_t	Bureaucrat::getGrade() const {
 	return (_grade);
+}
+
+const char *	Bureaucrat::GradeTooHighException::what() const throw() {
+	return ("Grade too high.");
+}
+
+const char *	Bureaucrat::GradeTooLowException::what() const throw() {
+	return ("Grade too low.");
 }

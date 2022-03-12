@@ -6,7 +6,7 @@
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:46:27 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/02/11 03:42:09 by mamaquig         ###   ########.fr       */
+/*   Updated: 2022/03/12 13:21:16 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,12 @@ class Bureaucrat {
 
 		class GradeTooHighException : public std::exception {
 			public:
-				const char *what() const throw() {
-					return ("Grade too high.");
-				}
+				const char *what() const throw();
 		};
 
 		class GradeTooLowException : public std::exception {
 			public:
-				const char *what() const throw() {
-					return ("Grade too low.");
-				}
+				const char *what() const throw();
 		};
 
 		void	UpGrade();

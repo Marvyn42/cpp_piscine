@@ -6,7 +6,7 @@
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 01:32:29 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/02/14 01:45:58 by mamaquig         ###   ########.fr       */
+/*   Updated: 2022/03/12 14:28:45 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,23 +27,17 @@ class AForm {
 
 		class GradeTooHighException : public std::exception {
 			public:
-				const char *what() const throw() {
-					return ("Grade too high.");
-				}
+				const char *what() const throw();
 		};
 
 		class GradeTooLowException : public std::exception {
 			public:
-				const char *what() const throw() {
-					return ("Grade too low.");
-				}
+				const char *what() const throw();
 		};
 
 		class FormNotSignedException : public std::exception {
 			public:
-				const char *what() const throw() {
-					return ("form is unsigned, can not execute it.");
-				}
+				const char *what() const throw();
 		};
 
 		virtual void	execute(Bureaucrat const & executor) const = 0;

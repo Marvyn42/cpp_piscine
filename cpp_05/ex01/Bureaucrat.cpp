@@ -6,7 +6,7 @@
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:47:08 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/02/11 03:55:24 by mamaquig         ###   ########.fr       */
+/*   Updated: 2022/03/12 14:03:42 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,12 @@ std::string	Bureaucrat::getName() const {
 
 uint32_t	Bureaucrat::getGrade() const {
 	return (_grade);
+}
+
+const char *	Bureaucrat::GradeTooHighException::what() const throw() {
+	return ("Grade too high.");
+}
+
+const char *	Bureaucrat::GradeTooLowException::what() const throw() {
+	return ("Grade too low.");
 }

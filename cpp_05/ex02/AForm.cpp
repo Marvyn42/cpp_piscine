@@ -6,7 +6,7 @@
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 01:32:31 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/02/15 14:10:04 by mamaquig         ###   ########.fr       */
+/*   Updated: 2022/03/12 14:27:51 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,4 +97,12 @@ uint32_t	AForm::get_signeGrade() const {
 
 uint32_t	AForm::get_execGrade() const {
 	return (this->_execGrade);
+}
+
+const char *	AForm::GradeTooHighException::what() const throw() {
+	return ("Grade too high.");
+}
+
+const char *	AForm::GradeTooLowException::what() const throw() {
+	return ("Grade too low.");
 }

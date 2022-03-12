@@ -6,7 +6,7 @@
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 01:32:31 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/02/11 03:59:49 by mamaquig         ###   ########.fr       */
+/*   Updated: 2022/03/12 14:16:13 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ std::ostream & operator<<(std::ostream & os, Form & ref) {
 		if (ref.isSigned())
 			os << "✔️\t│" << std::endl;
 		else
-			os << "❌\t│" << std::endl;
+			os << "❌\t│" << std::endl ;
 		os << "└───────────────────────────────────────┘";
 
 	return (os);
@@ -89,4 +89,12 @@ uint32_t	Form::get_signeGrade() const {
 
 uint32_t	Form::get_execGrade() const {
 	return (this->_execGrade);
+}
+
+const char *	Form::GradeTooHighException::what() const throw() {
+	return ("Grade too high.");
+}
+
+const char *	Form::GradeTooLowException::what() const throw() {
+	return ("Grade too low.");
 }
