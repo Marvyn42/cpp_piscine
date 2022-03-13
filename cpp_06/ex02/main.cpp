@@ -6,7 +6,7 @@
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 00:05:28 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/02/21 14:46:30 by mamaquig         ###   ########.fr       */
+/*   Updated: 2022/03/13 12:34:06 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,19 +51,19 @@ void identify(Base* p) {
 
 void identify(Base& p) {
 	try {
-		dynamic_cast<A&>(p);
+		(void)dynamic_cast<A&>(p);
 		std::cout << "A detected." << std::endl
 			<< "Address = " << &p << std::endl;
 	}
 	catch(const std::exception& e) {}
 	try {
-		dynamic_cast<B&>(p);
+		(void)dynamic_cast<B&>(p);
 		std::cout << "B detected." << std::endl
 			<< "Address = " << &p << std::endl;
 	}
 	catch(const std::exception& e) {}
 	try {
-		dynamic_cast<C&>(p);
+		(void)dynamic_cast<C&>(p);
 		std::cout << "C detected." << std::endl
 			<< "Address = " << &p << std::endl;
 	}

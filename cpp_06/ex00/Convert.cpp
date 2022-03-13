@@ -6,7 +6,7 @@
 /*   By: mamaquig <mamaquig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 14:43:01 by mamaquig          #+#    #+#             */
-/*   Updated: 2022/02/18 23:06:08 by mamaquig         ###   ########.fr       */
+/*   Updated: 2022/03/13 12:33:18 by mamaquig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,7 +199,7 @@ bool	Convert::isDouble() {
 	iss.clear();
 	if (!rest.empty())
 		return (false);
-	std::cout << std::setprecision(this->_literal.length() -1);
+	std::cout << std::setprecision(this->_literal.length() - 1);
 	this->_type = DOUBLE;
 	return (true);
 }
